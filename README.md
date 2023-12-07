@@ -2,13 +2,13 @@
 <div align="center">
 <h2>GenDeF: Learning Generative Deformation Field for Video Generation</h2>
 
-[Wen Wang](https://github.com/encounter1997)<sup>1</sup> &nbsp;
-[Kecheng Zheng](https://zkcys001.github.io/)<sup>4,1</sup> &nbsp;
-[Qiuyu Wang](https://github.com/qiuyu96)<sup>1</sup> &nbsp;
-[Hao Chen](https://scholar.google.com/citations?user=FaOqRpcAAAAJ)<sup>1</sup> &nbsp;
-[Zifan Shi](https://vivianszf.github.io/)<sup>2</sup> &nbsp;
-[Ceyuan Yang](https://ceyuan.me/)<sup>1</sup> &nbsp;
-[Yujun Shen](https://shenyujun.github.io/)<sup>1</sup> &nbsp;
+[Wen Wang](https://github.com/encounter1997)<sup>1,2*</sup> &nbsp;
+[Kecheng Zheng](https://zkcys001.github.io/)<sup>2</sup> &nbsp;
+[Qiuyu Wang](https://github.com/qiuyu96)<sup>2</sup> &nbsp;
+[Hao Chen](https://scholar.google.com/citations?user=FaOqRpcAAAAJ)<sup>1&dagger;</sup> &nbsp;
+[Zifan Shi](https://vivianszf.github.io/)<sup>3,2*</sup> &nbsp;
+[Ceyuan Yang](https://ceyuan.me/)<sup>4</sup> <br>
+[Yujun Shen](https://shenyujun.github.io/)<sup>2&dagger;</sup> &nbsp;
 [Chunhua Shen](https://cshen.github.io/)<sup>1</sup>
 
 <sup>*</sup>Intern at Ant Group &nbsp;
