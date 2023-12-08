@@ -20,7 +20,7 @@
 <sup>4</sup>Shanghai Artificial Intellgence Laboratory
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2312.xxxx">
+  <a href="https://arxiv.org/abs/2312.04561">
   <img src='https://img.shields.io/badge/arxiv-GenDeF-blue' alt='Paper PDF'></a>
   <a href="https://aim-uofa.github.io/GenDeF/">
   <img src='https://img.shields.io/badge/Project-Website-orange' alt='Project Page'></a>
@@ -82,7 +82,7 @@ If you find our work useful, please consider citing:
     title={GenDeF: Learning Generative Deformation Field for Video Generation},
     author={Wen Wang and Kecheng Zheng and Qiuyu Wang and Hao Chen and Zifan Shi and Ceyuan Yang and Yujun Shen and Chunhua Shen},
     year={2023},
-    eprint={2311.xxxx},
+    eprint={2312.04561},
     archivePrefix={arXiv},
     primaryClass={cs.CV}
 }
