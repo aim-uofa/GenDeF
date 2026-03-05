@@ -1,0 +1,115 @@
+# @package _group_
+
+name: stylegan-v
+generator:
+  deform_weight_copy: false  # copy rgb weight to deform weight for initialization
+  canonical_size: 256
+  with_canonical: false
+  freeze_canonical: false  # always false
+  deform_channel: 2  # always 2
+  deform_init: 'zero'  # 'xavier', 'random', or 'zero'
+  # dcn for deformation
+  deform_dcn: false
+  deform_dcn_lr_mult: 1
+  deform_dcn_min_res: 0
+  deform_dcn_max_res: 2048
+  deform_dcn_torgb: true 
+  deform_dcn_syn: true
+  deform_dcn_syn_concat: true 
+  # share_ws: false
+  canonical_cond: none
+  canonical_cond_dim: 0
+  canonical_feat: L13_256_128
+  # spade_norm: instance
+  # spade_zero_conv: false
+  # spade_pos: before_conv
+  # spade_freeze: false
+  fmaps: 0.5
+  sampling: ${sampling}
+  use_noise: false
+  input: {type: temporal}
+  w_dim: 512
+  z_dim: 512
+  fuse_w: concat
+  fr_t_k: 1
+  freezesyn: 0
+  freezemap: false
+  bspline: false
+  bs_emb: false
+  basef: 0
+  offset: 0
+  low_rank: -1
+  always_lr: false
+  learnable_motion_mask: false
+  init_motion_mask: zeros
+
+  # dcn
+  dcn: false
+  dcn_lr_mult: 1
+  dcn_min_res: 0
+  dcn_max_res: 2048
+  dcn_lidx: -1
+
+  # Motion mapping network hyperparameters
+  motion:
+    z_dim: 512
+    v_dim: 512
+
+    # Distance between motion codes
+    motion_z_distance: ${model.generator.time_enc.min_period_len}
+
+    # Parameters of the 2-layer conv1d-based motion generation network
+    gen_strategy: conv
+    kernel_size: 11
+
+    # Sample time positions in non-integer locations
+    use_fractional_t: true
+
+    # Use our aligned positional embeddings for time
+    fourier: true
+
+  # Hyperparameters for fourier positional encoder
+  time_enc:
+    cond_type: concat_const
+    dim: 256
+
+    # We use linearly spaced frequencies for positional embedding
+    # since they have larger overall period. This are start/end periods for them.
+    # A period of length `N` means that the given coordinate of the positional embedding
+    # vector will get repeated after `N` frames
+    # We set `min_period_len` to the same value as `motion_z_distance`
+    # since in some sense they reflect the same thing in a dataset: the speed of motions.
+    min_period_len: 16
+    max_period_len: 1024
+
+    # This randomly shifts different dimensions of time positional
+    # embeddings, making them more disentangled.
+    phase_dropout_std: 1.0
+
+discriminator:
+  depth: none
+  depth_ckpt: none
+  fmaps: 0.5
+  sampling: ${sampling}
+  concat_res: 16 # The resolution at which we concatenate frames
+  num_frames_div_factor: 2 # Divide the channel dimensionality by `num_frames_div_factor`
+  dummy_c: false # Multiply the conditioning vector by 0.0 for ablation purposes
+  tsm: false
+  tmean: false
+  always_update: false
+
+loss_kwargs:
+  near_frame_smooth_loss: 0.0
+  near_frame_smooth_loss_norm: false
+  near_frame_smooth_loss_type: '2to3_deform2img' # ['deform2img', 'deform2deform', 'flow2img', '2to3_deform2deform', '2to3_img2img', '2to3_deform2img']
+  style_mixing_prob: 0.0
+  pl_weight: 0.0
+  # Apply the same augmentation to all the frames of a video
+  # In our early experiments, the quality dropped a lot when disabling it
+  video_consistent_aug: true
+
+optim:
+  generator:
+    lr: 0.002
+  discriminator:
+    lr: 0.002
